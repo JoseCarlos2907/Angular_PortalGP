@@ -50,16 +50,36 @@
     .listaUltimosResultados{
         display: flex;
         flex-direction: column;
-        gap: 5vh;
+        gap: 10vh;
+        padding-bottom: 3%;
 
         margin-top: 5%;
         margin-left: 15%;
         margin-right: 15%;
 
+        .elementoUltimosResultados:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        
+        .elementoUltimosResultados:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
         .elementoUltimosResultados{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+
+            .textoUltimosResultados{
+                width: 45%;
+            }
+
+            img{
+                width: 45%;
+                height: 50%;
+                align-self: center;
+            }
 
             h2{
                 font-size: 28px;

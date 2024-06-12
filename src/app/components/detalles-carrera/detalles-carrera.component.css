@@ -178,3 +178,7 @@
         }
     }
 }
+
+.cursorBloqueado:hover{
+    cursor: not-allowed;
+}
