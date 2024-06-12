@@ -1,0 +1,111 @@
+.listaCarrerasMainDiv{
+    padding-bottom: 5%;
+    
+    h1{
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+        margin: 4%;
+    }
+
+    .listado{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        margin-left: 15%;
+        margin-right: 15%;
+        
+        padding-top: 3%;
+        padding-left: 3%;
+        padding-right: 3%;
+        
+        background-color: #fa0105;
+
+        .carreraClaro, .carreraOscuro{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            background-color: white;
+            font-weight: 600;
+            
+            margin-bottom: 5%;
+            padding-right: 3%;
+            
+            min-height: 200px;
+
+            img{
+                width: 15%;
+            }
+
+            h5:first-of-type {
+                width: 20%;
+            }
+
+            h5{
+                font-size: 30px;
+                margin: 0;
+            }
+
+            p{
+                width: 12%;
+                font-size: 25px;
+                margin: 0;
+                text-align: center;
+            }
+            
+            .estado{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 16%;
+
+                .finalizada, .enProceso, .porCorrer{
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
+                    border: 1 solid;
+                }
+
+                .finalizada{
+                    background-color: #2AD23B;
+                }
+
+                .enProceso{
+                    background-color: #DED500;
+                }
+
+                .porCorrer{
+                    background-color: #FE2225;
+                }
+
+                p{
+                    width: fit-content;
+                }
+            }
+        }
+
+        .carreraClaro:hover{
+            background-color: #FFB5B6 !important;
+            cursor: pointer;
+        }
+
+        .carreraOscuro:hover{
+            background-color: #FFFA81 !important;
+            cursor: pointer;
+        }
+    }
+}
+
+.no-hidden{
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    visibility: visible;
+
+    border: 0;
+    padding: 1%;
+}

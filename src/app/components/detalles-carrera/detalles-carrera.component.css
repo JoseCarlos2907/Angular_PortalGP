@@ -1,0 +1,180 @@
+.detallesCarreraMainDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .nombreCarreraTitulo{
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+    }
+
+    .eventoLibre, .eventoClasificacion, .eventoCarrera{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1%;
+
+        margin-bottom: 3%;
+
+        font-size: 30px;
+        font-weight: 600;
+        
+        button{
+            background-color: white;
+            border: 0;
+        }
+
+        .tablaPodio{
+            text-align: center;
+            width: 40%;
+            min-height: 60vh;
+
+            .tdPodio{
+                border: 1px solid black;
+                height: fit-content;
+            }
+
+            .rtdButton{
+                border-right: 1px solid black;
+                width: 40%;
+            }
+
+            .ltdButton{
+                border-left: 1px solid black;
+                width: 20%;
+            }
+
+            .tr td{
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+
+            border-collapse: collapse;
+        }
+    }
+    
+    .nombreYHorario{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        font-weight: 600;
+
+        div{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            padding: 2%;
+
+            background-color: #FFF967;
+            border: 3px solid black;
+            border-radius: 50px;
+
+            img{
+                margin-right: 3%;
+            }
+        }
+
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+    }
+
+
+    .imagenCircuito{
+        width: 100%;
+        padding-top: 25%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .comentarios{
+
+        .tituloComentarios{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding-left: 5%;
+            padding-right: 5%;
+            
+            h2{
+                font-size: 38px;
+                font-weight: 600;
+    
+            }
+
+            button{
+                border: 3px solid black;
+                border-radius: 20px;
+                padding: 1.5%;
+                padding-top: 1.65%;
+                background-color: #FFF967;
+            }
+        }
+        
+        
+        .listaDeComentarios{
+            margin-left: 10%;
+            margin-right: 10%;
+
+            .comentario{
+                margin-bottom: 10vh;
+                
+                h4{
+                    font-size: 28px;
+                    font-weight: 600;
+                }
+                
+                h3{
+                    font-size: 32px;
+                    font-weight: 600;
+                }
+                
+                .usuarioYPiloto{
+
+                    display: flex;
+                    justify-content: space-between;
+
+                    h3, h4{
+                        margin: 0;
+                    }
+
+                    div:first-of-type{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5%;
+                        width: 40%;
+
+                        img{
+                            height: 100px;
+                            width: 100px;
+                        }
+                    }
+                    
+                    div:last-of-type{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        gap: 5%;
+                        width: 40%;
+
+                        img{
+                            height: 60px;
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

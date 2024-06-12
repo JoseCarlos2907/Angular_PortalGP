@@ -1,0 +1,47 @@
+<div class="barraBusquedaMainDiv">
+    <form [formGroup]="searchForm" class="form">
+                
+        <mat-form-field appearance="fill">
+          <input type="text" matInput
+          formControlName="value"
+          [matAutocomplete]="auto"
+          (keyup)="onKeyup($event)"
+          (focus)="onKeyup($event)"
+          placeholder="Buscar"
+          >
+          <mat-autocomplete #auto="matAutocomplete">
+            @defer{
+              @if(resultadosFiltrados.length === 0){
+                <mat-option disabled>
+                  No hay resultados
+                </mat-option>
+              }
+              @for(resultado of resultadosFiltrados; track resultado){
+                  @if(resultado.tipo == "escuderia"){
+                      <mat-option [value]="resultado.nombre" (click)="opcionSeleccionada()">
+                        <img class="imagenPerfil" [src]="resultado.imgLogo" alt="Logo de la Escudería">
+                        {{ resultado.nombre }}
+                        <span class="tipo">(escudería)</span>
+                      </mat-option>
+                  }@else if(resultado.tipo == "piloto") {
+                      <mat-option [value]="resultado.nombre + ' ' + resultado.apellido" (click)="opcionSeleccionada()">
+                        <img class="imagenPerfil" [src]="resultado.imgPerfil" alt="Foto de perfil del Piloto">
+                        {{ resultado.nombre + " " + resultado.apellido }}
+                        <span class="tipo">(piloto)</span>
+                      </mat-option>
+                  }@else {
+                      <mat-option [value]="resultado.nombreUsuario" (click)="opcionSeleccionada()">
+                        <img class="imagenPerfil" [src]="resultado.imgPerfil" alt="Foto de perfil del Usuario">
+                        {{ resultado.nombreUsuario }}
+                        <span class="tipo">(usuario)</span>
+                      </mat-option>
+                  }
+              }
+            }@loading(minimum 1.5s){
+              <p>Loading...</p>
+            }
+          </mat-autocomplete>
+          <img matSuffix class="iconoInput" src="../../../assets/images/IconoBuscarNegro.png" alt="Logo de Lupa Negro">
+        </mat-form-field>
+  </form>
+</div>

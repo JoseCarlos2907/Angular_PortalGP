@@ -1,0 +1,199 @@
+
+.perfilPilotoMainDiv{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+    app-barra-busqueda{
+        width: 100%;
+    }
+
+    .barraBusqueda{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 4%;
+        margin-bottom: 4%;
+
+        form{
+            width: 30%;
+            
+            mat-form-field{
+                width: 100%;
+            }
+
+            input::placeholder{
+                text-align: end;
+                padding-right: 4%;
+            }
+        }
+
+        img{
+            height: 24px;
+            width: 24px;
+        }
+    }
+
+    .nombreCompletoTitulo{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        width: 27%;
+
+        font-size: 50px;
+        font-weight: 700;
+
+        h1{
+            margin: 0;
+        }
+
+        img{
+            align-self: center;
+            width: 36px;
+            height: 36px !important;
+        }
+    }
+ 
+    .datosPersonales{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        width: 80%;
+    
+        margin-top: 5%;
+        margin-bottom: 10%;
+
+        .fotoPiloto{
+            img{
+                height: 100%;
+            }
+        }
+
+        .especificacionesPiloto{
+            p{
+                font-size: 20px;
+            }
+
+            button{
+                background-color: #FFF967;
+                width: 50%;
+                border: 0;
+                height: 15%;
+                cursor: pointer;
+                font-size: 24px;
+                font-weight: 500;
+            }
+
+            button:hover{
+                background-color: orange;
+            }
+        }
+    }
+
+    .datosProfesionales{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        background-color: #fa0105;
+
+        width: 100%;
+
+        padding-top: 5%;
+        padding-bottom: 5%;
+
+        .tablasDatosPiloto{
+            width: 30%;
+
+            
+            .tiempos, .posiciones{
+                background-color: white;
+                padding-top: 2%;
+                padding-bottom: 2%;
+                box-shadow: inset 1px 1px 10px 5px rgb(209, 207, 207);
+                
+                .tiempo, .posicion{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+                .posicion div p{
+                    margin: 0;
+                }
+
+                hr{
+                    background-color: #C5BBBB;
+                    height: 2px;
+                    border: 0;
+                }
+            }
+
+            h2{
+                color: white;
+                text-align: center;
+                font-size: 34px;
+                font-weight: 500;
+            }
+
+            p{
+                color: black;
+                font-size: 26px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .imagenCoche{
+        width: 100%;
+        padding-top: 25%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        p{
+            margin: 0;
+        }
+    }
+
+    .graficaPiloto{
+        height: 600px;
+    }
+}
+
+
+.graficaClasificacionOscuro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 800px;
+
+    padding-top: 5%;
+    padding-bottom: 5%;
+    
+    background-color: rgb(104, 103, 103);
+}
+
+.graficaClasificacionClaro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 800px;
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+    
+    background-color: white;
+}

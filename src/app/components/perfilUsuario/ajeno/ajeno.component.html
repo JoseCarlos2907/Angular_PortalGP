@@ -1,0 +1,63 @@
+@if(comprobanteAnchoPantalla === true){
+  <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+  <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+<div class="perfilAjenoMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4">
+    <div class="informacionCuenta">
+      <div class="seguidores">
+        <h2>{{ nombreUsuario }}</h2>
+        <div>
+          <p>Seguidores <br> {{ seguidores }}</p>
+
+          <p>Seguidos <br> {{ seguidos }}</p>
+        </div>
+        @if(sigueUsuario === true){
+          <button (click)="dejarDeSeguirUsuario()">
+            Dejar de seguir
+          </button>
+        }@else {
+          <button (click)="seguirUsuario()">
+            Seguir
+          </button>
+        }
+      </div>
+      <img [src]="imgPerfil" alt="Imagen perfil usuario">
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="Comentarios">
+        <div 
+        [class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+        [class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+        class="tabContent" #tabContent (scroll)="onScroll($event)">
+          @if(comentariosCargados.length == 0){
+            <h2 class="tabVacio">Este usuario no tiene comentarios</h2>
+          }@else {
+            @for(item of comentariosCargados; track 0){
+              <div class="comentario">
+                <div class="usuarioYPiloto">
+                    <div>
+                        <img [src]="item.imgPerfilUsuario" alt="Imagen perfil usuario">
+                        <h3>{{ item.nombreUsuario }}</h3>
+                    </div>
+                    <div>
+                        <img [src]="item.imgPerfilPiloto" alt="Imagen perfil piloto">
+                        <h4>{{ item.nombrePiloto }}</h4>
+                    </div>
+                </div>
+  
+                <h4>GP de {{ item.nombrePais }}</h4>
+                <p>{{ item.comentario }}</p>
+                
+                <hr>
+            </div>
+            }
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+</div>

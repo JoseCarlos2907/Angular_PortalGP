@@ -1,0 +1,214 @@
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+<div class="perfilPilotoMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+>
+    <!-- Barra de busqueda -->
+    <app-barra-busqueda></app-barra-busqueda>
+
+    <div class="nombreCompletoTitulo">
+        <h1>{{ usuario.nombreCompleto }}</h1>
+    </div>
+
+    <div class="datosPersonales">
+
+        <div class="fotoPiloto">
+            <img [src]="usuario.imgPerfil" >
+        </div>
+
+        <div class="especificacionesPiloto">
+            <p>Nombre: {{ usuario.nombreCompleto }}</p>
+            <p>Fecha de Nacimiento: {{ formatoFecha(usuario.fechaNac) }}</p>
+            <p>Altura: {{ usuario.altura }} m</p>
+            <p>Peso: {{ usuario.peso }} Kg</p>
+            <p>Número: {{ usuario.numero }}</p>
+            <p>Escudería Actual: {{ usuario.nombreEscuderia }}</p>
+
+            @if(siguePiloto === true){
+                <button 
+                [class.claroAM]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2 || temaSeleccionado == 4"
+                [class.oscuroRJ]="temaSeleccionado == 3"
+                (click)="dejarDeSeguir()"
+                >
+                    <!-- Icono -->
+                    Dejar de Seguir
+                </button>
+              }@else {
+                <button 
+                [class.claroAM]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2 || temaSeleccionado == 4"
+                [class.oscuroRJ]="temaSeleccionado == 3"
+                (click)="seguirPiloto()"
+                >
+                    <!-- Icono -->
+                    Seguir
+                </button>
+              }
+        </div>
+
+    </div>
+
+    @defer{
+
+        <div class="datosProfesionales"
+        [class.imagenesPerfilesClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2 || temaSeleccionado == 3"
+        [class.imagenesPerfilesOscuro]="temaSeleccionado == 4"
+        >
+            <div class="tablasDatosPiloto">
+                <h2>Ultimos Tiempos</h2>
+                <div class="tiempos">
+                    <div class="tiempo">
+                        <p>{{ ultimosTiempos[0].tiempo }}</p>
+                        @if (ultimosTiempos[0].tipo == 'Libres') {
+                            @if (ultimosTiempos[0].numeroLibre == 5 ) {
+                                <p>Sprint</p>
+                            }@else if (ultimosTiempos[0].numeroLibre == 4) {
+                                <p>C.Sprint</p>
+                            }@else {
+                                <p>{{ ultimosTiempos[0].tipo + ' ' + ultimosTiempos[0].numeroLibre}}</p>
+                            }
+                        }@else {
+                            <p>{{ ultimosTiempos[0].tipo }}</p>
+                        }
+                        <p>GP de {{ ultimosTiempos[0].nombrePais }}</p>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="tiempo">
+                        <p>{{ ultimosTiempos[1].tiempo }}</p>
+                        @if (ultimosTiempos[1].tipo == 'Libres') {
+                            @if (ultimosTiempos[1].numeroLibre == 5 ) {
+                                <p>Sprint</p>
+                            }@else if (ultimosTiempos[1].numeroLibre == 4) {
+                                <p>C.Sprint</p>
+                            }@else {
+                                <p>{{ ultimosTiempos[1].tipo + ' ' + ultimosTiempos[1].numeroLibre}}</p>
+                            }
+                        }@else {
+                            <p>{{ ultimosTiempos[1].tipo }}</p>
+                        }
+                        <p>GP de {{ ultimosTiempos[1].nombrePais }}</p>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="tiempo">
+                        <p>{{ ultimosTiempos[2].tiempo }}</p>
+                        @if (ultimosTiempos[2].tipo == 'Libres') {
+                            @if (ultimosTiempos[2].numeroLibre == 5 ) {
+                                <p>Sprint</p>
+                            }@else if (ultimosTiempos[2].numeroLibre == 4) {
+                                <p>C.Sprint</p>
+                            }@else {
+                                <p>{{ ultimosTiempos[2].tipo + ' ' + ultimosTiempos[2].numeroLibre}}</p>
+                            }
+                        }@else {
+                            <p>{{ ultimosTiempos[2].tipo }}</p>
+                        }
+                        <p>GP de {{ ultimosTiempos[2].nombrePais }}</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="tablasDatosPiloto">
+                <h2>Ultimas Posiciones</h2>
+                <div class="posiciones">
+                    <div class="posicion">
+                        <p>Pos: {{ ultimasPosiciones[0].posicion }}</p>
+                        <div>
+                            @if (ultimosTiempos[0].tipo == 'Libres') {
+                                @if (ultimosTiempos[0].numeroLibre == 5 ) {
+                                    <p>Sprint</p>
+                                }@else if (ultimosTiempos[0].numeroLibre == 4) {
+                                    <p>C.Sprint</p>
+                                }@else {
+                                    <p>{{ ultimosTiempos[0].tipo + ' ' + ultimosTiempos[0].numeroLibre}}</p>
+                                }
+                            }@else {
+                                <p>{{ ultimosTiempos[0].tipo }}</p>
+                            }
+                            <p>GP de {{ ultimasPosiciones[0].nombrePais }}</p>
+                        </div>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="posicion">
+                        <p>Pos: {{ ultimasPosiciones[1].posicion }}</p>
+                        <div>
+                            @if (ultimosTiempos[1].tipo == 'Libres') {
+                                @if (ultimosTiempos[1].numeroLibre == 5 ) {
+                                    <p>Sprint</p>
+                                }@else if (ultimosTiempos[1].numeroLibre == 4) {
+                                    <p>C.Sprint</p>
+                                }@else {
+                                    <p>{{ ultimosTiempos[1].tipo + ' ' + ultimosTiempos[1].numeroLibre}}</p>
+                                }
+                            }@else {
+                                <p>{{ ultimosTiempos[1].tipo }}</p>
+                            }
+                            <p>GP de {{ ultimasPosiciones[1].nombrePais }}</p>
+                        </div>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="posicion">
+                        <p>Pos: {{ ultimasPosiciones[2].posicion }}</p>
+                        <div>
+                            @if (ultimosTiempos[2].tipo == 'Libres') {
+                                @if (ultimosTiempos[2].numeroLibre == 5 ) {
+                                    <p>Sprint</p>
+                                }@else if (ultimosTiempos[2].numeroLibre == 4) {
+                                    <p>C.Sprint</p>
+                                }@else {
+                                    <p>{{ ultimosTiempos[2].tipo + ' ' + ultimosTiempos[2].numeroLibre}}</p>
+                                }
+                            }@else {
+                                <p>{{ ultimosTiempos[2].tipo }}</p>
+                            }
+                            <p>GP de {{ ultimasPosiciones[2].nombrePais }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }@loading (minimum 0.2s){
+        <p>Loading</p>
+    }
+
+    <div [style]="imagenCoche" class="imagenCoche"></div>
+
+    <!-- Grafica de pilotos, escuderias, etc... -->
+
+    <div 
+    [class.graficaClasificacionClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+    [class.graficaClasificacionOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+    >
+    @defer{
+        <ngx-charts-line-chart
+        [view]="view"
+        [legend]="legend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [results]="multi"
+        [yAxisTicks]="yAxisTicks"
+        [yScaleMin]="yScaleMin"
+        [yScaleMax]="yScaleMax"
+        >
+        <!-- [activeEntries]="activeEntries" -->
+        </ngx-charts-line-chart>
+    } @loading (minimum 1s){
+    }
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="confirmarEliminarMainDiv">
+    <h2>¿Realmente desea eliminar su usuario?</h2>
+
+    <form [formGroup]="deleteUserForm">
+        <label>Escribe tu contraseña para confirmar</label>
+        <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="text" 
+            formControlName="contrasenia" 
+            placeholder="Contraseña"
+            >
+            @if(deleteUserForm.get('contrasenia')?.hasError('required')){
+                <mat-error>
+                Por favor, introduzca una contraseña
+                </mat-error>
+            }
+        </mat-form-field>
+    </form>
+
+    <div class="botonesDecision">
+        <button mat-button (click)="volver()">No</button>
+        <button mat-button (click)="eliminar()">Si</button>
+    </div>
+</div>

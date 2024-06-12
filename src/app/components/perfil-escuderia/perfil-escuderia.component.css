@@ -1,0 +1,65 @@
+.perfilEscuderiaMainDiv{
+
+    .nombreCompletoTitulo{
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+    }
+
+    .informacionEscuderia{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+
+        width: 80%;
+
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+
+        .fotoLogo{
+            height: 350px;
+            width: 350px;
+            img{
+                height: 100%;
+            }
+        }
+
+        .descripcionEscuderia{
+            width: 40%;
+            p{
+                font-size: 20px;
+            }
+        }
+    }
+
+    .fotosCoche{
+        background-color: #fa0105;
+    }
+
+    .imagenPequenia{
+        width: 80%;
+        height: 235px;
+        cursor: pointer;
+    }
+
+    .imagenGrande{
+        width: 80%;
+        height: 467px;
+    }
+
+    .imagenEscuderia{
+        width: 100%;
+        padding-top: 25%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .graficaEscuderia{
+        height: 600px;
+    }
+}
+

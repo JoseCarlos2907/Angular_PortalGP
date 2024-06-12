@@ -1,0 +1,210 @@
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+<div class="detallesCarreraMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4" >
+    <!-- Barra de busqueda -->
+    <app-barra-busqueda></app-barra-busqueda>
+
+    <h1 class="nombreCarreraTitulo">GP de {{ nombrePais }}</h1>
+
+    <div class="eventoLibre">
+        <button
+        [class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+        [class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+        (click)="libreAnterior()">
+            <img src="../../../assets/images/IconoFlechaIzquierdaNegro.png" alt="Icono de flecha Izquierda Negro">
+        </button>
+        <table class="tablaPodio">
+            <tbody>
+            <tr>
+                <td colspan="3">
+                    <div class="nombreYHorario">
+                        <h4>{{ datosLibres[pos].tipo }}</h4>
+                        <p>{{ convertirFechaACadena(datosLibres[pos].fecha, datosLibres[pos].hora) }}</p>
+                        <div>
+                            <!-- Icono Reloj -->
+                            <img src="../../../assets/images/IconoEnProcesoNegro.png" height="25px" width="25px" alt="Icono en proceso Negro">
+                            <p>{{ datosLibres[pos].hora }}</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="tdPodio">PODIO</td>
+            </tr>
+            @if(datosLibres[pos].tiempos.length == 0){
+                <tr class="tr">
+                    <td class="ltdButton">1</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">2</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">3</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+            }@else {
+                @for(tiempo of datosLibres[pos].tiempos; track 0){
+                    <tr class="tr">
+                        <td class="ltdButton">{{ tiempo.posicion }}</td>
+                        <td>{{ tiempo.nombrePiloto }} <br> {{ tiempo.apellidoPiloto }}</td>
+                        <td class="rtdButton">{{ tiempo.tiempo }}</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        </table>
+        <button
+        [class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+        [class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+        (click)="libreSiguiente()"> 
+            <img src="../../../assets/images/IconoFlechaDerechaNegro.png" alt="Icono flecha derecha Negro">
+        </button>
+    </div>
+
+    <div class="eventoClasificacion">
+        <table class="tablaPodio">
+            <tbody>
+            <tr>
+                <td colspan="3">
+                    <div class="nombreYHorario">
+                        <h4>Clasificacion</h4>
+                        <p>{{ convertirFechaACadena(datosClasificacion.fecha, datosClasificacion.hora) }}</p>
+                        <div>
+                            <!-- Icono Reloj -->
+                            <img src="../../../assets/images/IconoFinalizadoNegro.png" height="25px" width="25px" alt="Icono finalizar Negro">
+                            <p>{{ datosClasificacion.hora }}</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="tdPodio">PODIO</td>
+            </tr>
+            @if(datosClasificacion.tiempos.length == 0){
+                <tr class="tr">
+                    <td class="ltdButton">1</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">2</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">3</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+            }@else {
+                @for(tiempo of datosClasificacion.tiempos; track 0){
+                    <tr class="tr">
+                        <td class="ltdButton">{{ tiempo.posicion }}</td>
+                        <td> {{ tiempo.nombrePiloto }} <br> {{ tiempo.apellidoPiloto }}  </td>
+                        <td class="rtdButton">{{ tiempo.tiempo }}</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        </table>
+    </div>
+
+    <div class="eventoCarrera">
+        <table class="tablaPodio">
+            <tbody>
+            <tr>
+                <td colspan="3">
+                    <div class="nombreYHorario">
+                        <h4>Carrera</h4>
+                        <p>{{ convertirFechaACadena(datosCarrera.fecha, datosCarrera.hora) }}</p>
+                        <div>
+                            <!-- Icono Reloj -->
+                            <img src="../../../assets/images/IconoHoraNegro.png" height="25px" width="25px" alt="Icono hora Negro">
+                            <p>{{ datosCarrera.hora }}</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="tdPodio">PODIO</td>
+            </tr>
+            @if(datosCarrera.tiempos.length == 0){
+                <tr class="tr">
+                    <td class="ltdButton">1</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">2</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+                <tr class="tr">
+                    <td class="ltdButton">3</td>
+                    <td> --- </td>
+                    <td class="rtdButton">--:--:---</td>
+                </tr>
+            }@else {
+                @for(tiempo of datosCarrera.tiempos; track 0){
+                    <tr class="tr">
+                        <td class="ltdButton">{{ tiempo.posicion }}</td>
+                        <td> {{ tiempo.nombrePiloto }} <br> {{ tiempo.apellidoPiloto }}  </td>
+                        <td class="rtdButton">{{ tiempo.tiempo }}</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        </table>
+    </div>
+
+    <div [style]="imagenCircuito" class="imagenCircuito"></div>
+
+    <div class="comentarios">
+        <div class="tituloComentarios">
+            <h2>Comentarios</h2>
+
+                <button mat-stroked-button [disabled]="haComentado == true"
+                (click)="abrirModalComentar()"
+                >
+                    <img src="../../../assets/images/IconoComentarioNegro.png" alt="Icono comentario Negro">
+                </button>
+        </div>
+
+        <div class="listaDeComentarios">
+            @if(comentarios == 'Esta carrera no tiene comentarios'){
+                <p>No hay comentarios</p>
+            }@else {
+                @for(comentario of comentarios; track 0){
+                    <div class="comentario">
+                        <div class="usuarioYPiloto">
+                            <div>
+                                <img [src]="comentario.imgPerfilUsuario" alt="Imagen perfil Usuario">
+                                <h3>{{ comentario.nombreUsuario }}</h3>
+                            </div>
+                            <div>
+                                <img [src]="comentario.imgPerfilPiloto" alt="Imagen perfil Piloto">
+                                <h4>{{ comentario.nombrePiloto }}</h4>
+                            </div>
+                        </div>
+        
+                        <h4>Grand Prix de {{ comentario.nombrePais }}</h4>
+                        <p>{{ comentario.comentario }}</p>
+                        
+                        <hr>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

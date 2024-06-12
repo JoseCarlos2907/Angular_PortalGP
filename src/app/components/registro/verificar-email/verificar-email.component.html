@@ -1,0 +1,29 @@
+<div class="verEmailMainDiv">
+    <div class="row">
+        <div>
+          <div class="wrapper-progressBar">
+            <ul class="progressBar">
+              <li class="active">Datos Personales</li>
+              <li class="active">Contraseña</li>
+              <li class="active">Confirmacion de Cuenta</li>
+              <li>Pilotos a Seguir</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    <div class="content">
+        <div class="contentBody">
+            <h1>Confirmación de Cuenta</h1>
+            
+            <p>Debe verificar el correo de confirmación <br> que le hemos enviado al email {{ correoUsuario | async }}</p>
+            
+            <a (click)="volverAEnviarCorreo()">Volver a enviar</a>
+        </div>
+    </div>
+    <div class="buttonsRow">
+        <button (click)="finalizarRegistro()">
+          <p>Finalizar</p>
+        </button>
+    </div>
+</div>

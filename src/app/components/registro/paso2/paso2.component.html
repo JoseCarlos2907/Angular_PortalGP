@@ -1,0 +1,81 @@
+<div class="paso2RegistroMainDiv">
+    <div class="row">
+      <div>
+        <div class="wrapper-progressBar">
+          <ul class="progressBar">
+            <li class="active">Datos Personales</li>
+            <li class="active">Contraseña</li>
+            <li>Confirmacion de Cuenta</li>
+            <li>Pilotos a Seguir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+        <h1>Contraseña</h1>
+        <div class="requisitosContrasenia">
+            <p>Los requisitos mínimos para la contraseña son:</p>
+            <ul>
+                <li>8 caracteres</li>
+                <li>1 mayúscula y 1 minúscula</li>
+                <li>1 carácter especial</li>
+                <li>1 número</li>
+            </ul>
+        </div>
+
+        <form [formGroup]="paso2RegForm" (ngSubmit)="goToValidateEmail()" class="form">
+                <mat-form-field class="mat-form-field">
+                <input class="input" matInput [type]="hide1 ? 'password' : 'text'" formControlName="contrasenia" placeholder="Contraseña">
+                <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                  @if(hide1){
+                      <img class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono ocultar contraseña Negro">
+                  }@else{
+                      <img class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono mostrar contraseña Negro">
+                  }
+              </button>
+                @if(paso2RegForm.get('contrasenia')?.hasError('required')){
+                    <mat-error>
+                    Por favor, introduzca una contraseña
+                    </mat-error>
+                }@else if(paso2RegForm.get('contrasenia')?.hasError('pattern')){
+                  <mat-error>
+                    El formato de la contraseña no es el correcto
+                </mat-error>
+                }
+                </mat-form-field>
+
+                
+                <mat-form-field class="mat-form-field">
+                <input class="input" matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmarContrasenia" placeholder="Repetir Contraseña">
+                <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                  @if(hide2){
+                      <img class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono ocultar contraseña Negro">
+                  }@else{
+                      <img class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono mostrar contraseña Negro">
+                  }
+              </button>
+                @if(paso2RegForm.get('confirmarContrasenia')?.hasError('required')){
+                    <mat-error>
+                        Por favor, introduzca una contraseña
+                    </mat-error>
+                  }@else if(paso2RegForm.get('confirmarContrasenia')?.hasError('pattern')){
+                      <mat-error>
+                        El formato de la contraseña no es el correcto
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <div class="buttonsRow">
+                    <button (click)="goToPaso1()">
+                      <img src="../../../../assets/images/IconoFlechaIzquierdaBlanco.png" alt="Icono flecha izquierda Blanco">
+                      <p>Anterior</p>
+                    </button>
+                    <button type="submit">
+                      <p>Siguiente</p>
+                      <img src="../../../../assets/images/IconoFlechaDerechaBlanco.png" alt="Icono flecha derecha Blanco">
+                    </button>
+                  </div>
+        </form>
+    </div>
+</div>

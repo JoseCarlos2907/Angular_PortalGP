@@ -1,0 +1,49 @@
+
+<div class="mainDivHeader">
+    <div 
+    [class.logoOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+    [class.logoClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+    class="imagenHeader">
+        <a href="/home">
+            <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Logo PortalGP">
+        </a>
+    </div>
+
+    <div class="redDivHeader"
+    [class.claro1]="temaSeleccionado == 0"
+    [class.claro2]="temaSeleccionado == 1"
+    [class.claro3]="temaSeleccionado == 2"
+    [class.oscuro1]="temaSeleccionado == 3"
+    [class.oscuro2]="temaSeleccionado == 4"
+    >
+        <div class="opcionesHeader">
+            <a (click)="goTo('/lista-carreras')">Carreras</a>
+            <a (click)="goTo('/clasificacion-pilotos-oficial')">Clasificación Oficial <br> de Pilotos</a>
+            <a (click)="goTo('/clasificacion-pilotos-comunidad')">Clasificación de Pilotos <br> de la Comunidad</a>
+            <a (click)="goTo('/clasificacion-escuderias-oficial')">Clasificación Oficial <br> de Escuderías</a>
+        </div>
+        
+        <div class="perfil">
+            @defer {
+                @if(loggeado === false){
+                    <span (click)="identificarse()">
+                        <img src="../../../assets/images/UsuarioPredeterminado.png" alt="Imagen usuario predeterminado">
+                        <p>Identificarse</p>
+                    </span>
+                }
+                @else {
+                    <span (click)="configuracionCuenta()">
+                        <img [src]='imgPerfilUsuario' alt="Imagen perfil Usuario">
+                        <p>Tu Perfil</p>
+                    </span>
+                }
+            } @loading (minimum 1s) {
+                <p-skeleton size="3rem" />
+                <p-skeleton width="10rem" styleClass="mb-2" />
+            }
+            
+        </div>
+    </div>
+
+    
+</div>

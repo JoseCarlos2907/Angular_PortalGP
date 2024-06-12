@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Exo 2", sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+/* html, body { height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+mat-tab-group{
+    background-color: red !important;
+}
+
+.mat-mdc-tab-header {
+    --mat-tab-header-label-text-size: 36px;
+    --mat-tab-header-label-text-tracking: 0.0892857143em;
+    --mat-tab-header-label-text-line-height: 0;
+    --mat-tab-header-label-text-weight: 600;
+
+    height: 15vh;
+}
+
+.mat-mdc-tab-header {
+    --mdc-secondary-navigation-tab-container-height: 15vh;
+}
+
+.loginMainDiv .mat-mdc-form-field-flex, .paso1RegistroMainDiv .mat-mdc-form-field-flex, .paso2RegistroMainDiv .mat-mdc-form-field-flex, .confCuentaMainDiv .mat-mdc-form-field-flex, .confirmarEliminarMainDiv .mat-mdc-form-field-flex, .resetPwdMainDiv .mat-mdc-form-field-flex, .comentarMainDiv .mat-mdc-form-field-flex{
+    border: 2px solid black;
+    padding-left: 5%;
+    font-weight: 800;
+    color: black;
+}
+
+app-barra-busqueda .mat-mdc-form-field-flex{
+    border-bottom: 5px solid #fa0105;
+    padding-left: 5%;
+    font-weight: 800;
+    color: black;
+}
+
+.paso1RegistroMainDiv .mat-mdc-form-field-flex {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.paso1RegistroMainDiv .mat-mdc-form-field-icon-suffix {
+    align-self: center;
+    line-height: 0;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    height: 100% !important;
+    width: 12% !important;
+}
+
+.paso1RegistroMainDiv .mdc-fab {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.paso1RegistroMainDiv input.p-inputtext.p-component.p-element.p-inputmask {
+    height: 100% !important;
+    width: 100% !important;
+
+    border: 2px solid black;
+    padding-left: 5%;
+    font-weight: 700;
+    font-size: 17px;
+    background-color: #F5F5F5;
+}
+
+
+.paso1RegistroMainDiv input.p-inputtext.p-component.p-element.p-inputmask:hover {
+    background-color: #ECECEC;
+}
+
+.paso2RegistroMainDiv .mat-mdc-form-field-flex {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 78px;
+}
+
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper, .mdc-text-field--filled:not(.mdc-text-field--disabled)  {
+    padding: 0;
+}
+
+.mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+    border-bottom-color: black !important;
+}
+
+.mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+    border-bottom-color: black !important;
+}
+
+.barraBusquedaMainDiv .mat-mdc-form-field-flex {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 2.5%;
+}
+
+.confCuentaMainDiv chevronrighticon, .confCuentaMainDiv chevrondownicon{
+    color: rgb(0,0,0,0);
+    background-image: url('assets/images/IconoEditarNegro.png');
+    background-position: center;
+    background-size: contain;
+}
+
+#pn_id_1_header_action, #pn_id_2_header_action{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+
+    border-radius: 0;
+    border: 0;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    padding: 0;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+}
+
+.p-accordion-content{
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.mat-mdc-radio-button.mat-accent {
+    --mdc-radio-disabled-selected-icon-color: black;
+    --mdc-radio-disabled-unselected-icon-color: black;
+    --mdc-radio-unselected-hover-icon-color: #212121;
+    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-selected-focus-icon-color: black;
+    --mdc-radio-selected-hover-icon-color: black;
+    --mdc-radio-selected-icon-color: black;
+    --mdc-radio-selected-pressed-icon-color: black;
+    --mat-radio-ripple-color: black;
+    --mat-radio-checked-ripple-color: black;
+    --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+}
+
+p-skeleton{
+    display: flex;
+    justify-content: center;
+}
+
+p-skeleton[styleclass="mb-2"] .p-skeleton{
+    width: 45% !important;
+    margin-top: 5%;
+}
+
+.p-skeleton{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+ngx-charts-chart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ngx-charts-legend{
+    display: block;
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 65vw !important;
+        min-width: 65vw !important;
+
+        margin-left: 25% !important;
+    }
+}
+
+.chart-legend {
+    display: block !important;
+}
+
+.ngx-charts-outer{
+    width: fit-content !important;
+}
+
+
+.p-sidebar{
+    width: 50%;
+}
+
+.p-sidebar, .p-sidebar-header, .p-sidebar-content{
+    background-color: #FE2225;
+    color: white;
+}
+
+.p-sidebar-close-icon{
+    color: white;
+}
+
+
+.mat-mdc-button .mdc-button__label{
+    text-align: start;
+    width: 90%;
+}
+
+
+.claro1 {
+  background-color: red !important;
+  color: white !important;
+}
+
+.claro2 {
+  background-color: red !important;
+  color: black !important;
+}
+
+.claro3 {
+  background-color: red !important;
+  color: #FFF967 !important;
+}
+
+button.claroAM {
+    background-color: #FFF967 !important;
+    color: black !important;
+}
+
+.oscuro1 {
+  background-color: black !important;
+  color: red !important;
+}
+
+button.oscuroRJ {
+    background-color: red !important;
+    color: black !important;
+}
+
+.oscuro2 {
+  background-color: black !important;
+  color: #FFF967 !important;
+}
+
+
+.bgClaro{
+    background-color: white !important;
+    color: black !important;
+}
+
+.bgOscuro{
+    background-color: rgb(104, 103, 103) !important;
+    color: black !important;
+    .p-accordion-content{
+        background-color: rgb(104, 103, 103);
+    }
+}
+
+.bgConfCuenta{
+    background-color: rgb(104, 103, 103);
+    color: black !important;
+    .p-accordion-content{
+        background-color: rgb(104, 103, 103);
+        color: black !important;
+    }
+}
+
+.vaClaro{
+    background-color: #D60104;
+}
+
+.vaOscuro{
+    background-color: #575757;
+}
+
+.fondoListaCarrerasClaro{
+    background-color: #fa0105 !important;
+}
+
+.fondoListaCarrerasOscuro{
+    background-color: rgb(66, 66, 66) !important;
+    color: black !important;
+}
+
+.imagenesPerfilesClaro{
+    background-color: #fa0105 !important;
+}
+
+.imagenesPerfilesOscuro{
+    background-color: #FFF967 !important;
+    h2{
+        color: black !important;
+    }
+}
+
+
+
+.successSB{
+    --mdc-snackbar-container-color: #6EE27A;
+    --mdc-snackbar-supporting-text-color: black;
+}
+
+.warningSB{
+    --mdc-snackbar-container-color: #E2A93B;
+    --mdc-snackbar-supporting-text-color: black;
+}
+
+.errorSB{
+    --mdc-snackbar-container-color: #280C79;
+    --mdc-snackbar-supporting-text-color: white;
+}

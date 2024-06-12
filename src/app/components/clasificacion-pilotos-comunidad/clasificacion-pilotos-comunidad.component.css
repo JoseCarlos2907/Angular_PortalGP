@@ -1,0 +1,88 @@
+.clasificacionMainDiv{
+
+    h1{
+        text-align: center;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+        margin: 4%;
+    }
+
+    .clasificacion{
+        margin-left: 10%;
+        margin-right: 10%;
+        
+        padding-bottom: 5%;
+
+        p{
+            margin: 0;
+        }
+
+        table{
+            width: 100%;
+            text-align: center;
+
+            border-collapse: collapse;
+            
+            th{
+                font-size: 34px;
+                font-weight: bold;
+
+                width: 12%;
+
+                border-bottom: 3px solid #A59595;
+            }
+
+            .trPilotoOscuro:hover{
+                background-color: #FFFA81 !important;
+                cursor: pointer;
+                color: black;
+            }
+            
+            .trPilotoClaro:hover{
+                background-color: #FFB5B6 !important;
+                cursor: pointer;
+                color: black;
+            }
+            
+            td{
+                font-size: 30px;
+                font-weight: 500;
+
+                border-bottom: 3px solid #C5BBBB;
+
+                padding: 1%;
+                
+                img{
+                    width: 40%;
+                }
+            }
+
+
+            .tdPais img{
+                width: 45%;
+
+                border: 0;
+                border-radius: 3px;
+            }
+            
+            .tdEscuderia{
+                width: 45%;
+            }
+
+            .tdNombreCompleto{
+                p{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .graficaClasificacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-bottom: 10%;
+    }
+}

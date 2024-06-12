@@ -1,0 +1,196 @@
+body{
+    max-width: 100vw;
+}
+
+.paso1RegistroMainDiv{
+
+    h1{
+        text-align: center;
+        font-size: 40px;
+        font-weight: 700;
+        margin: 3%;
+        margin-bottom: 0;
+    }
+
+    .row{
+        margin: 0;
+        margin-top: 2%;
+    }
+
+    .wrapper-progressBar {
+        width: 100%
+    }
+    
+    .progressBar li {
+        list-style-type: none;
+        float: left;
+        width: 25%;
+        position: relative;
+        text-align: center;
+    }
+    
+    .progressBar li:before {
+        content: " ";
+        line-height: 30px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #FA0105;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px;
+        background-color: #FA0105;
+    }
+    
+    .progressBar li:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        border: 3px solid #FA0105;
+        background-color: #FA0105;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+    
+    .progressBar li:first-child:after {
+        content: none;
+    }
+    
+    .progressBar li.active {
+        font-weight: 800;
+        color: black;
+    }
+    
+    .progressBar li.active:before {
+        font-weight: 800;
+        border-color: #FA0105;
+        background-color: #FFF84E;
+    }
+    
+    .progressBar .active:after {
+        font-weight: 800;
+        background-color: #FFF84E;
+    }
+    
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    } 
+
+    .rowDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 10%;
+        padding-right: 10%;
+
+        min-height: 100px;
+
+        margin-top: 3%;
+
+        p-inputMask, mat-form-field{
+            width: 40%;
+        }
+
+        p-inputMask{
+            height: 78px;
+        }
+    }
+
+    #inputImagenPerfil{
+        display: none;
+    }
+    
+    .inputImagenPerfil {
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        background-color: #F5F5F5;
+        color: #5E5E5E;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 40%;
+        height: 78px;
+
+        border: 2px solid black;
+        font-weight: 800;
+        font-size: 17px;
+
+        p{
+            margin: 0;
+            margin-left: 5%;
+        }
+
+        img{
+            height: 100%;
+            width: auto;
+        }
+    }
+    .buttonsRow{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding-left: 10%;
+        padding-right: 10%;
+
+        margin-top: 4%;
+        margin-bottom: 4%;
+
+        button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 20%;
+
+            background-color: #FA0105;
+            color: white;
+            border: 2px solid black;
+
+            p{
+                margin: 0;
+                margin-left: 3%;
+                margin-right: 3%;
+            }
+
+            img{
+                height: 24px;
+            }
+        }
+    }
+}
+
+.ng-autocomplete {
+    width: 100%;
+    max-width: 600px;
+    display: table;
+    margin: 0 auto;
+  }
+  
+
+  /* Estilo del botón de barra de búsqueda */
+  mat-mdc-button-touch-target{
+    height: 100%;
+    width: 100%;
+}
+
+.mat-mdc-fab:not(.mdc-fab--extended) {
+    background-color: #FA0105;
+    border-radius: 0;
+}
+
+
+/* Inputs */
+.mat-mdc-form-field-flex {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 500px;
+}

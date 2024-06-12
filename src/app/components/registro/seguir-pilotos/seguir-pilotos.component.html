@@ -1,0 +1,37 @@
+<div class="seguirPilotosMainDiv">
+    <div class="row">
+        <div>
+          <div class="wrapper-progressBar">
+            <ul class="progressBar">
+              <li class="active">Datos Personales</li>
+              <li class="active">Contraseña</li>
+              <li class="active">Confirmacion de Cuenta</li>
+              <li class="active">Pilotos a Seguir</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    <div class="content">
+        <h1>Pilotos a Seguir</h1>
+
+        <div class="pilotos">
+            @for(piloto of pilotos; track piloto.id){
+                <div class="piloto">
+                    <button (click)="seguirPiloto(piloto.id)" [ngClass]="piloto.seguir ? 'seguido' : 'seguir'">
+                        @if(piloto.seguir){
+                            Seguido
+                        }@else {
+                            Seguir
+                        }
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="buttonsRow">
+        <button (click)="goToHome()">
+          <p>Iniciar Sesión</p>
+        </button>
+    </div>
+</div>

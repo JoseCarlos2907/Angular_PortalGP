@@ -1,0 +1,49 @@
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+<div class="clasificacionMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+>
+    <!-- Barra de busqueda -->
+    <app-barra-busqueda></app-barra-busqueda>
+
+    <h1>Clasificacion Oficial <br> de Escuderías </h1>
+
+    <div class="clasificacion">
+        <table>
+            <tbody>
+                <tr>
+                    <th><p>Pos</p></th>
+                    <th><p>Foto</p></th>
+                    <th><p>Nombre Escudería </p></th>
+                    <th><p>Pais</p></th>
+                    <th><p>Puntos</p></th>
+                </tr>
+                    @for(escuderia of datosClasificacion; track $index){
+                        <tr 
+                        [class.trPilotoClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2 || temaSeleccionado == 3 "
+                        [class.trPilotoOscuro]="temaSeleccionado == 4"
+                        (click)="verPerfilEscuderia(escuderia.idEscuderia)">
+                            <td><p>{{ $index + 1 }}</p></td>
+                            <td class="tdImgPiloto">
+                                <p>
+                                    <img [src]="escuderia.imgLogo" alt="Logo de la Escudería">
+                                </p>
+                            </td>
+                            <td class="tdNombreCompleto">
+                                <p>{{ escuderia.nombre }}</p>
+                            </td>
+                            <td class="tdPais">
+                                <img [src]="getImagenBandera(escuderia.paisCC)" alt="Bandera de País" [title]="escuderia.nombrePais"/>
+                            </td>
+                            <td><p>{{ escuderia.puntosTotales }}</p></td>
+                        </tr> 
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>

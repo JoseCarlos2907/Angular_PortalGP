@@ -1,0 +1,226 @@
+.imagen {
+    /* position: absolute; */
+    left: 0;
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+}
+
+.imagen:hover {
+    opacity: 0.25;
+    cursor: pointer;
+}
+
+.confCuentaMainDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+        margin: 4%;
+    }
+
+    .cambiosPrincipales{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 60%;
+
+        
+        .cambioImagen{
+            background-image: url('../../../assets/images/IconoEditarNegro.png');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .inputsPrincipales{
+            width: 40%;
+            form{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: end;
+    
+                height: 100%;
+                width: 100%;
+
+                mat-form-field{
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+
+    .acordeones{
+        
+        width: 80%;
+
+        h2{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .requisitos{
+            display: flex;
+            flex-direction: column;
+            justify-content: baseline;
+
+            margin: 2%;
+
+            p{
+                font-size: 18px;
+            }
+
+            ul{
+                width: 100%;
+            }
+
+            li{
+                margin-left: 5%;
+                font-size: 18px;
+            }
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            width: 100%;
+
+            mat-form-field{
+                width: 30%;
+            }
+        }
+    
+        .opcionesTemas{
+            width: 100%;
+        }
+
+        .opcionesTemas mat-radio-group{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: space-around;
+
+            width: 100%;
+
+            .opcionIndividual{
+                width: 250px;
+                height: 300px;
+
+                margin-top: 25%;
+
+                border: 1px solid black;
+
+                .colores{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    padding: 5%;
+
+                    height: 70%;
+
+                    border: 1px solid black;
+
+                    .color{
+                        width: 50%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .nombreYRadio{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+
+                height: 30%;
+                border: 1px solid black;
+                
+                p{
+                    margin: 0;
+                }
+
+                mat-radio-button{
+                    margin-bottom: 7.5%;
+                }
+            }
+        }
+    }
+
+    .botonesFinales{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 100%;
+
+        padding-left: 10%;
+        padding-right: 10%;
+
+        button{
+            p{
+                margin-left: 5%;
+            }
+        }
+    }
+}
+
+.submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 60px;
+    width: 20%;
+
+    margin: 3%;
+
+    background-color: #FA0105;
+    color: white;
+    border: 0;
+    
+    p {
+        margin: 0;
+        margin-left: 3%;
+        margin-right: 3%;
+    
+    }
+
+    img {
+        height: 24px;
+    }
+}
+
+.rojo{
+    background-color: #FA0105;
+}
+
+.negro{
+    background-color: black;
+}
+
+.blanco{
+    background-color: white;
+    border: 2px solid black;
+}
+
+.amarillo{
+    background-color: #FFF967;
+}
+
+hr{
+    height: 2px;
+    background-color: black;
+    width: 100%;
+
+    opacity: 1;
+}

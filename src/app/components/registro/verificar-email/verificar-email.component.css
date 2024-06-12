@@ -1,0 +1,140 @@
+.verEmailMainDiv{
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        height: 57.5vh;
+
+        .contentBody{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+        }
+
+
+        h1{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            margin: 4%;
+        }
+
+        p{
+            font-size: 40px;
+            font-weight: 600;
+            margin: 3%;
+        }
+
+        a{
+            text-align: end;
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+
+            width: 75%;
+        }
+    }
+
+
+    .row{
+        margin: 0;
+        margin-top: 2%;
+    }
+
+    .wrapper-progressBar {
+        width: 100%
+    }
+    
+    .progressBar li {
+        list-style-type: none;
+        float: left;
+        width: 25%;
+        position: relative;
+        text-align: center;
+    }
+    
+    .progressBar li:before {
+        content: " ";
+        line-height: 30px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #FA0105;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px;
+        background-color: #FA0105;
+    }
+    
+    .progressBar li:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        border: 3px solid #FA0105;
+        background-color: #FA0105;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+    
+    .progressBar li:first-child:after {
+        content: none;
+    }
+    
+    .progressBar li.active {
+        font-weight: 800;
+        color: black;
+    }
+    
+    .progressBar li.active:before {
+        font-weight: 800;
+        border-color: #FA0105;
+        background-color: #FFF84E;
+    }
+    
+    .progressBar .active:after {
+        font-weight: 800;
+        background-color: #FFF84E;
+    }
+
+
+    .buttonsRow{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+
+        width: 100%;
+
+        padding-left: 10%;
+        padding-right: 10%;
+
+        margin-bottom: 4%;
+
+        button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 20%;
+
+            background-color: #FA0105;
+            color: white;
+            border: 2px solid black;
+
+            p{
+                margin: 0;
+                margin-left: 3%;
+                margin-right: 3%;
+                font-size: 20px;
+            }
+
+            img{
+                height: 24px;
+            }
+        }
+    }
+}

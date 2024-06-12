@@ -1,0 +1,65 @@
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [comeFromReg]="comeFromReg" [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+<div class="homeMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+>
+    <!-- Barra de busqueda -->
+    <app-barra-busqueda></app-barra-busqueda>
+
+    <div class="banner">
+        <p 
+        [class.menor1025px]="comprobanteAnchoPantalla"
+        [class.menor600px]="menor600px"
+        >
+            PortalGP
+        </p>
+    </div>
+
+    <div class="listaUltimosResultados">
+        <div class="elementoUltimosResultados">
+            <div class="textoUltimosResultados">
+                <h2>Titulo 1</h2>
+                <h3>Subtitulo 1</h3>
+                <p>+ Contenido 1</p>
+            </div>
+            <!-- <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Informacion 1"> -->
+        </div>
+        <div class="elementoUltimosResultados">
+            <div class="textoUltimosResultados">
+                <h2>Titulo 2</h2>
+                <h3>Subtitulo 2</h3>
+                <p>+ Contenido 2</p>
+            </div>
+            <!-- <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Informacion 2"> -->
+        </div>
+        <div class="elementoUltimosResultados">
+            <div class="textoUltimosResultados">
+                <h2>Titulo 3</h2>
+                <h3>Subtitulo 3</h3>
+                <p>+ Contenido 3</p>
+            </div>
+            <!-- <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Informacion 3"> -->
+        </div>
+        <div class="elementoUltimosResultados">
+            <div class="textoUltimosResultados">
+                <h2>Titulo 4</h2>
+                <h3>Subtitulo 4</h3>
+                <p>+ Contenido 4</p>
+            </div>
+            <!-- <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Informacion 4"> -->
+        </div>
+        <div class="elementoUltimosResultados">
+            <div class="textoUltimosResultados">
+                <h2>Titulo 5</h2>
+                <h3>Subtitulo 5</h3>
+                <p>+ Contenido 5</p>
+            </div>
+            <!-- <img src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Informacion 5"> -->
+        </div>
+    </div>
+</div>

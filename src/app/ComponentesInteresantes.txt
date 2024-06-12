@@ -1,0 +1,21 @@
++NG-Bootstrap:
+-Carousel
+-Modal
+-Progressbar
+-Rating
+-Typeahead
+
++Clarity:
+-Timeline
+-Spinner
+
++NgxCharts:
+-Diagrama de barras
+-Diagrama de lineas
+-Diagrama de tarta
+
++PrimeNG:
+-Stepper
+-Steps
+-InputMask
+-Ripple

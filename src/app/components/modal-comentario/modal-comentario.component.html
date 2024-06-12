@@ -1,0 +1,29 @@
+<div class="comentarMainDiv">
+    <div>
+        <h1>Comentar</h1>
+        <img src="../../../assets/images/IconoCerrarNegro.png" alt="Icono cerrar Negro" (click)="cerrarModal()">
+    </div>
+
+
+    <form [formGroup]="formComentario" (ngSubmit)="comentar()" class="form">
+        <mat-form-field>
+            <mat-label>¿Quien ha sido el mejor piloto?</mat-label>
+            <mat-select formControlName="idPiloto">
+                @for(piloto of pilotos; track 0){
+                    <mat-option [value]="piloto.idPiloto">
+                        <img [src]="piloto.imgPerfil" alt="Imagen perfil usuario">
+                        {{ piloto.nombre + ' ' + piloto.apellido }}
+                    </mat-option>
+                }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Escribe un comentario</mat-label>
+            <textarea matInput formControlName="comentario"></textarea>
+            <mat-hint align="end">{{formComentario.value.comentario.length}}/600</mat-hint>
+          </mat-form-field>
+    
+        <button class="button is" mat-stroked-button cdkFocusInitial color="primary" type="submit">Comentar</button>
+    </form>
+</div>

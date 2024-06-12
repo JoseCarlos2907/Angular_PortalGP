@@ -1,0 +1,44 @@
+<div class="loginMainDiv">
+    <div>
+        <h1>Iniciar Sesión</h1>
+        <img src="../../../assets/images/IconoCerrarNegro.png" alt="Icono cerrar Negro" (click)="cerrarModal()">
+    </div>
+
+
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="form">
+        <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="email" formControlName="correo" placeholder="Correo">
+            <img matSuffix class="iconoInput" src="../../../assets/images/IconoCorreoNegro.png" alt="Icono correo Negro">
+            @if(loginForm.get('correo')?.hasError('pattern') || loginForm.get('correo')?.hasError('required')){
+                <mat-error>
+                    Por favor, introduzca un correo válido 
+                </mat-error>
+            }
+        </mat-form-field>
+    
+        <mat-form-field class="mat-form-field">
+            <input class="input" [type]="hide ? 'password' : 'text'" matInput formControlName="contrasena" placeholder="Contraseña">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                @if(hide){
+                    <img matSuffix class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono ocultar contraseña Negro">
+                }@else{
+                    <img matSuffix class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono mostrar contraseña Negro">
+                }
+            </button>
+            @if(loginForm.get('contrasena')?.hasError('required')){
+                <mat-error>
+                    Debe indicar la contraseña del usuario
+                </mat-error>
+            }
+        </mat-form-field>
+    
+        <button class="button is" mat-stroked-button cdkFocusInitial color="primary" type="submit">Iniciar Sesión</button>
+        <a class="olvidoContrasena" (click)="openResetPasswordModal()">He olvidado mi contraseña</a>
+    </form>
+
+
+    <div class="registro">
+        <h1>Registrarse</h1>
+        <button class="button rg" (click)="goToRegisterUser()">Registrarse</button>
+    </div>
+</div>

@@ -1,0 +1,246 @@
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+
+<div class="confCuentaMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgConfCuenta]="temaSeleccionado == 3 || temaSeleccionado == 4"
+>
+
+    <h1>Configuracion de Cuenta</h1>
+
+    <div class="cambiosPrincipales">
+        <div class="cambioImagen">
+                <img class="imagen" [src]="base64Image" alt="Uploaded Image" (click)="seleccionarNuevaFoto()">
+                <input id="imagenNueva" type="file" style="display: none;" (change)="handle($event)">
+        </div>
+        
+        <div class="inputsPrincipales">
+            <form [formGroup]="formDatosPrincipales">
+                <mat-form-field class="mat-form-field">
+                    <input class="input" matInput type="text" 
+                    formControlName="newNombreUsuario" 
+                    placeholder="Nombre de Usuario"
+                    >
+                    @if(formDatosPrincipales.get('newNombreUsuario')?.hasError('required')){
+                      <mat-error>
+                        Por favor, introduzca su Nombre de Usuario con un formato válido
+                      </mat-error>
+                    }
+                  </mat-form-field>
+
+                <mat-form-field class="mat-form-field">
+                    <input class="input" matInput type="text" 
+                    formControlName="newNombre" 
+                    placeholder="Nombre"
+                    >
+                    @if(formDatosPrincipales.get('newNombre')?.hasError('required')){
+                      <mat-error>
+                        Por favor, introduzca su Nombre con un formato válido
+                      </mat-error>
+                    }
+                  </mat-form-field>
+                  
+                  <mat-form-field class="mat-form-field">
+                    <input class="input" matInput type="text" 
+                    formControlName="newApellidos" 
+                    placeholder="Apellidos"
+                    >
+                    @if(formDatosPrincipales.get('newApellidos')?.hasError('required')){
+                        <mat-error>
+                            Por favor, introduzca sus Apellidos con un formato válido
+                        </mat-error>
+                      }
+                  </mat-form-field>
+            </form>
+        </div>
+        
+    </div>
+    <button class="submitButton" (click)="cambiosDatosPrincipales()">
+        <img src="../../../assets/images/IconoGuardarBlanco.png" alt="Icono de Guardar Blanco">
+        <p>Guardar Cambios</p>
+    </button>
+
+    <div class="acordeones">
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="Cambiar Contraseña"
+            [class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+            [class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+            >
+                <h2>Cambiar contraseña</h2>
+                <div class="requisitos">
+                    <p>Los requisitos mínimos para la contraseña son:</p>
+                    <ul>
+                        <li>8 caracteres</li>
+                        <li>1 mayúscula y 1 minúscula</li>
+                        <li>1 carácter especial</li>
+                        <li>1 número</li>
+                    </ul>
+                </div>
+
+                <form [formGroup]="formContrasenia">
+                    <mat-form-field class="mat-form-field">
+                        <input class="input" matInput type="text" 
+                        formControlName="oldContrasenia" 
+                        placeholder="Contraseña Antigua"
+                        [type]="hide1 ? 'password' : 'text'"
+                        >
+                        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                            @if(hide1){
+                                <img class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono ocultar contraseña Negro">
+                            }@else{
+                                <img class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono mostrar contraseña Negro">
+                            }
+                        </button>
+                        @if(formContrasenia.get('oldContrasenia')?.hasError('required')){
+                            <mat-error>
+                            Por favor, introduzca una contraseña
+                            </mat-error>
+                        }@else if(formContrasenia.get('oldContrasenia')?.hasError('pattern')){
+                          <mat-error>
+                            El formato de la contraseña no es el correcto
+                        </mat-error>
+                        }
+                      </mat-form-field>
+    
+                    <mat-form-field class="mat-form-field">
+                        <input class="input" matInput type="text" 
+                        formControlName="newContrasenia" 
+                        placeholder="Contraseña nueva"
+                        [type]="hide2 ? 'password' : 'text'"
+                        >
+                        <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                            @if(hide2){
+                                <img class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono ocultar contraseña Negro">
+                            }@else{
+                                <img class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono mostrar contraseña Negro">
+                            }
+                        </button>
+                        @if(formContrasenia.get('newContrasenia')?.hasError('required')){
+                            <mat-error>
+                            Por favor, introduzca una contraseña
+                            </mat-error>
+                        }@else if(formContrasenia.get('newContrasenia')?.hasError('pattern')){
+                          <mat-error>
+                            El formato de la contraseña no es el correcto
+                        </mat-error>
+                        }
+                      </mat-form-field>
+                      
+                      <mat-form-field class="mat-form-field">
+                        <input class="input" matInput type="text" 
+                        formControlName="newContraseniaRepetida" 
+                        placeholder="Repetir Contraseña nueva"
+                        [type]="hide3 ? 'password' : 'text'"
+                        >
+                        <button mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+                            @if(hide3){
+                                <img class="iconoInput" src="../../../assets/images/IconoOcultarContraseniaNegro.png" alt="Icono de ocultar Negro">
+                            }@else{
+                                <img class="iconoInput" src="../../../assets/images/IconoMostrarContraseniaNegro.png" alt="Icono de mostrar Negro">
+                            }
+                        </button>
+                        @if(formContrasenia.get('newContraseniaRepetida')?.hasError('required')){
+                            <mat-error>
+                            Por favor, introduzca una contraseña
+                            </mat-error>
+                        }@else if(formContrasenia.get('newContraseniaRepetida')?.hasError('pattern')){
+                          <mat-error>
+                            El formato de la contraseña no es el correcto
+                        </mat-error>
+                        }
+                      </mat-form-field>
+                </form>
+
+                <button class="submitButton" (click)="cambiarContrasenia()">
+                    <p>Cambiar Contraseña</p>
+                </button>
+            </p-accordionTab>
+            <p-accordionTab header="Cambiar Tema">
+                <p>Selecciona el tema que mas te guste y confirmalo pulsando el boton de cambiar tema</p>
+                <form [formGroup]="formTemaSeleccionado">
+                <div class="opcionesTemas">
+                    <mat-radio-group formControlName="temaSeleccionado">
+                        <div class="opcionIndividual">
+                            <div class="colores">
+                                <div class="color rojo"></div>
+                                <div class="color blanco"></div>
+                            </div>
+                            <div class="nombreYRadio">
+                                <p>Claro 1 - Rojo y <br> Blanco</p>
+                                <mat-radio-button value="0"></mat-radio-button>
+                            </div>
+                        </div>
+
+                    <div class="opcionIndividual">
+                        <div class="colores">
+                            <div class="color rojo"></div>
+                            <div class="color negro"></div>
+                        </div>
+                        <div class="nombreYRadio">
+                            <p>Claro 2 - Rojo y <br> Negro</p>
+                            <mat-radio-button value="1"></mat-radio-button>
+                        </div>
+                    </div>
+
+                    <div class="opcionIndividual">
+                        <div class="colores">
+                            <div class="color rojo"></div>
+                            <div class="color amarillo"></div>
+                        </div>
+                        <div class="nombreYRadio">
+                            <p>Claro 3 - Rojo y <br> Amarillo</p>
+                            <mat-radio-button value="2"></mat-radio-button>
+                        </div>
+                    </div>
+
+                    <div class="opcionIndividual">
+                        <div class="colores">
+                            <div class="color negro"></div>
+                            <div class="color rojo"></div>
+                        </div>
+                        <div class="nombreYRadio">
+                            <p>Oscuro 1 - Negro <br> y Rojo</p>
+                            <mat-radio-button value="3"></mat-radio-button>
+                        </div>
+                    </div>
+
+                    <div class="opcionIndividual">
+                        <div class="colores">
+                            <div class="color negro"></div>
+                            <div class="color amarillo"></div>
+                        </div>
+                        <div class="nombreYRadio">
+                            <p>Oscuro 2 - Negro y <br> Amarillo</p>
+                            <mat-radio-button value="4"></mat-radio-button>
+                        </div>
+                    </div>
+                  </mat-radio-group>
+                </div>
+
+                <button class="submitButton" (click)="cambiarTema()">
+                    <p>Cambiar Tema</p>
+                </button>
+                </form>
+
+                <hr>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+
+
+    <div class="botonesFinales">
+        <button class="submitButton" (click)="cerrarSesion()">
+            <img src="../../../assets/images/IconoSalirBlanco.png" alt="Icono salir Blanco">
+            <p>Cerrar Sesión</p>
+        </button>
+        
+        <button class="submitButton" (click)="eliminarCuenta()">
+            <img src="../../../assets/images/IconoBorrarBlanco.png" alt="Icono borrar Blanco">
+            <p>Eliminar Cuenta</p>
+        </button>
+    </div>
+</div>

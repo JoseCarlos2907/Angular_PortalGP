@@ -1,0 +1,121 @@
+<div class="paso1RegistroMainDiv">
+    <div class="row">
+      <div>
+        <div class="wrapper-progressBar">
+          <ul class="progressBar">
+            <li class="active">Datos Personales</li>
+            <li>Contraseña</li>
+            <li>Confirmacion de Cuenta</li>
+            <li>Pilotos a Seguir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h1>Datos Personales</h1>
+
+    <form [formGroup]="paso1RegForm" (ngSubmit)="goToPaso2()" class="form">
+
+      <div class="rowDiv">
+          <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="text" formControlName="nombre" placeholder="Nombre">
+            @if(paso1RegForm.get('nombre')?.hasError('required') || paso1RegForm.get('nombre')?.hasError('pattern')){
+              <mat-error>
+                Por favor, introduzca su Nombre con un formato válido
+              </mat-error>
+            }
+          </mat-form-field>
+          
+          <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="text" formControlName="apellidos" placeholder="Apellidos">
+            @if(paso1RegForm.get('apellidos')?.hasError('required') || paso1RegForm.get('apellidos')?.hasError('pattern')){
+                <mat-error>
+                    Por favor, introduzca sus Apellidos con un formato válido
+                </mat-error>
+              }
+          </mat-form-field>
+        </div>
+
+        <div class="rowDiv">
+
+          <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="text" formControlName="nombreUsuario" placeholder="Nombre de Usuario">
+            @if(paso1RegForm.get('nombreUsuario')?.hasError('required')){
+              <mat-error>
+                Por favor, introduzca un Nombre de Usuario 
+              </mat-error>
+            }
+          </mat-form-field>
+        
+          <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="text" formControlName="correo" placeholder="Correo">
+            @if(paso1RegForm.get('correo')?.hasError('required') || paso1RegForm.get('correo')?.hasError('pattern')){
+                <mat-error>
+                  Por favor, introduzca un correo válido 
+                </mat-error>
+            }
+          </mat-form-field>
+        </div>
+          
+        <div class="rowDiv">
+          <mat-form-field appearance="fill">
+            <input type="text" matInput
+            formControlName="pais"
+            [matAutocomplete]="auto"
+            (keyup)="onKeyup($event)"
+            placeholder="Busque su país"
+            >
+            <mat-autocomplete #auto="matAutocomplete">
+              @if(paisesFiltrados.length === 0){
+                <mat-option disabled>
+                  No se han encontrado paises
+                </mat-option>
+              }
+              @for(pais of paisesFiltrados; track pais.idPais){
+                <mat-option [value]="pais.nombre">
+                  {{ pais.nombre }}
+                </mat-option>
+              }
+            </mat-autocomplete>
+            <button mat-fab matSuffix>
+              <mat-icon>search</mat-icon>
+            </button>
+
+            @if(paso1RegForm.get('pais')?.hasError('required')){
+              <mat-error>
+                Por favor, elija un país 
+              </mat-error>
+            }
+          </mat-form-field>
+
+
+
+          <p-inputMask 
+          formControlName="fechaNac" 
+          mask="99/99/9999" 
+          placeholder="Fecha de nacimiento" 
+          slotChar="mm/dd/yyyy" />
+            
+        </div>
+        
+        <div class="rowDiv">
+          <label for="inputImagenPerfil" class="inputImagenPerfil">
+            <p>Foto de Perfil</p>
+              <img [src]="base64Image" alt="Imagen perfil usuario seleccionada">
+          </label>
+          <input type="file" id="inputImagenPerfil" formControlName="fotoPerfil" (change)="handleImageUpload($event)">
+        </div>
+        
+        <div class="buttonsRow">
+          <button (click)="cancelRegister()">
+            <img src="../../../../assets/images/IconoCerrarBlanco.png" alt="Icono cerrar Blanco">
+            <p>Cancelar</p>
+          </button>
+          <button type="submit">
+            <p>Siguiente</p>
+            <img src="../../../../assets/images/IconoFlechaDerechaBlanco.png" alt="Icono flecha derecha Blanco">
+          </button>
+        </div>
+    </form>
+
+</div>

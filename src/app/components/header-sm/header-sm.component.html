@@ -1,0 +1,43 @@
+<div class="redDivHeader">
+    <button mat-button (click)="toggleSidenav()">
+        <img src="../../../assets/images/IconoMenuNegro.png" alt="Icono menu Negro">
+    </button>
+
+    <p-sidebar [(visible)]="abierto">
+        <h1 class="h1Sidebar">PortalGP</h1>
+        <hr class="bigHrSidebar">
+        <button [class.menor600px]="menor600px" mat-button (click)="goTo('/lista-carreras')">Carreras</button>
+        <hr class="hrSidebar">
+        <button [class.menor600px]="menor600px" mat-button (click)="goTo('/clasificacion-pilotos-oficial')">Clasificación Oficial de Pilotos</button>
+        <hr class="hrSidebar">
+        <button [class.menor600px]="menor600px" mat-button (click)="goTo('/clasificacion-pilotos-comunidad')">Clasificación de Pilotos de la Comunidad</button>
+        <hr class="hrSidebar">
+        <button [class.menor600px]="menor600px" mat-button (click)="goTo('/clasificacion-escuderias-oficial')">Clasificación Oficial de Escuderías</button>
+        <hr class="hrSidebar">
+    </p-sidebar>
+
+    <a [class.menor600px]="menor600px" (click)="goTo('/home')">
+        <img [class.menor600px]="menor600px" src="../../../assets/images/LogoPortalGP-SinBG.png" alt="Logo PortalGP">
+    </a>
+
+    <div class="perfil">
+        @defer {
+            @if(loggeado === false){
+                <span (click)="identificarse()">
+                    <img src="../../../assets/images/UsuarioPredeterminado.png" alt="Imagen perfil Usuario predeterminado">
+                    <p>Identificarse</p>
+                </span>
+            }
+            @else {
+                <span (click)="configuracionCuenta()">
+                    <img [src]='imgPerfilUsuario' alt="Imagen perfil usuario">
+                    <p>Tu Perfil</p>
+                </span>
+            }
+        } @loading (minimum 1s) {
+            <p-skeleton size="3rem" />
+            <p-skeleton width="10rem" styleClass="mb-2" />
+        }
+        
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="resetPwdMainDiv">
+    <div>
+        <h1>Reiniciar la Contraseña</h1>
+    </div>
+
+
+    <form [formGroup]="reiniciarContraseniaForm" (ngSubmit)="reiniciarContrasenia()" class="form">
+        <mat-form-field class="mat-form-field">
+            <input class="input" matInput type="email" formControlName="correo" placeholder="Correo">
+            <img matSuffix class="iconoInput" src="../../../assets/images/IconoCorreoNegro.png" alt="Icono correo Negro">
+            @if(reiniciarContraseniaForm.get('correo')?.hasError('pattern') || reiniciarContraseniaForm.get('correo')?.hasError('required')){
+                <mat-error>
+                    Por favor, introduzca un correo válido 
+                </mat-error>
+            }
+        </mat-form-field>
+    
+        <button class="button is" mat-stroked-button cdkFocusInitial color="primary" type="submit">Enviar Correo</button>
+    </form>
+</div>

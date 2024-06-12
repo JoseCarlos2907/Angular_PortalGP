@@ -1,0 +1,56 @@
+
+@if(comprobanteAnchoPantalla === true){
+    <app-header-sm [temaSeleccionado]="temaSeleccionado"></app-header-sm>
+}@else {
+    <app-header [temaSeleccionado]="temaSeleccionado"></app-header>
+}
+
+
+<div class="perfilEscuderiaMainDiv"
+[class.bgClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2"
+[class.bgOscuro]="temaSeleccionado == 3 || temaSeleccionado == 4"
+>
+
+    <!-- Barra de busqueda -->
+    <app-barra-busqueda></app-barra-busqueda>
+    <h1 class="nombreCompletoTitulo">{{ escuderia.nombre }}</h1>
+
+    <div class="informacionEscuderia">
+
+        <div class="fotoLogo">
+            <img [src]="escuderia.imgLogo" alt="Imagen logo escudería">
+        </div>
+
+        <div class="descripcionEscuderia">
+            <p>{{ escuderia.descripcion }}</p>
+        </div>
+    </div>
+    
+    <div class="fotosCoche"
+    [class.imagenesPerfilesClaro]="temaSeleccionado == 0 || temaSeleccionado == 1 || temaSeleccionado == 2 || temaSeleccionado == 3"
+    [class.imagenesPerfilesOscuro]="temaSeleccionado == 4"
+    >
+        <div class="gridImagenes">
+            <mat-grid-list cols="4">
+                <mat-grid-tile [colspan]="2" [rowspan]="2">
+                    <img class="imagenGrande" [src]="imagenSeleccionada" alt="Imagen coche seleccionada">
+                </mat-grid-tile>
+                
+                <mat-grid-tile (click)="seleccionarImagen(escuderia.imgPrincipal)">
+                    <img class="imagenPequenia" [src]="escuderia.imgPrincipal" alt="Imagen de coche principal">
+                </mat-grid-tile>
+                <mat-grid-tile (click)="seleccionarImagen(escuderia.segundaImg)">
+                    <img class="imagenPequenia" [src]="escuderia.segundaImg" alt="Secundaria imagen de coche">
+                </mat-grid-tile>
+                <mat-grid-tile (click)="seleccionarImagen(escuderia.terceraImg)">
+                    <img class="imagenPequenia" [src]="escuderia.terceraImg" alt="Terciaria imagen de coche">
+                </mat-grid-tile>
+                <mat-grid-tile (click)="seleccionarImagen(escuderia.cuartaImg)">
+                    <img class="imagenPequenia" [src]="escuderia.cuartaImg" alt="Cuarta imagen de coche">
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>    
+    
+    <div [style]="imagenEscuderia" class="imagenEscuderia"></div>
+</div>
