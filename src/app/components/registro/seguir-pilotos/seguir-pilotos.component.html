@@ -17,7 +17,7 @@
 
         <div class="pilotos">
             @for(piloto of pilotos; track piloto.id){
-                <div class="piloto">
+                <div [style]="piloto.imgPerfil" class="piloto">
                     <button (click)="seguirPiloto(piloto.id)" [ngClass]="piloto.seguir ? 'seguido' : 'seguir'">
                         @if(piloto.seguir){
                             Seguido

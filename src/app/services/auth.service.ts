@@ -15,7 +15,7 @@ export class AuthService {
     #afAuth: AngularFireAuth = inject(AngularFireAuth);
 
     // Metodos de Firebase
-  async fbLogin(correo: string, contrasenia: string){
+  async fbLogin(correo: string, contrasenia: string): Promise<any>{
     try {
       const result = await this.#afAuth.signInWithEmailAndPassword(correo, contrasenia);
       return result;

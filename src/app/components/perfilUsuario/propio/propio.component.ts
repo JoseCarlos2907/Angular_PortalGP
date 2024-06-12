@@ -109,7 +109,7 @@ export class PropioComponent {
       console.log(seguidos);
       
 
-      if(seguidos.length > 5){
+      if(seguidos != 'Este usuario no tiene seguidos'){
         for (let i = 0; i < this.numSeguidosCargados; i++) {
           this.seguidosCargados.push(this.seguidos[i]);
         }

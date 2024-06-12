@@ -36,6 +36,10 @@ export class UsuariosService {
     return this.#httpClient.get<any>(`${environment.urlUsuarios}/${idUsuario}/seguidos`);
   }
 
+  getPilotosSeguidosByIdUsuario(idUsuario: number | undefined): Observable<any>{
+    return this.#httpClient.get<any>(`${environment.urlUsuarios}/${idUsuario}/pilotos-seguidos`);
+  }
+
   getComentariosByIdUsuario(idUsuario: number): Observable<any[]>{
     return this.#httpClient.get<any[]>(`${environment.urlUsuarios}/${idUsuario}/comentarios`);
   }
