@@ -12,6 +12,7 @@ import { CarrerasService } from '../../services/carreras.service';
 import { PilotosModel } from '../../models/pilotos.model';
 import { CochesService } from '../../services/coches.service';
 import { AuthService } from '../../services/auth.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-perfil-piloto',
@@ -30,6 +31,7 @@ export class PerfilPilotoComponent {
   // Servicios del componente
   #breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
   #pilotoService: PilotosService = inject(PilotosService);
+  #usuariosService: UsuariosService = inject(UsuariosService);
   #actRoute: ActivatedRoute = inject(ActivatedRoute);
   #carrerasService: CarrerasService = inject(CarrerasService);
   #authService: AuthService = inject(AuthService);
@@ -104,6 +106,13 @@ export class PerfilPilotoComponent {
     this.#pilotoService.getCocheByIdPiloto(this.idPiloto).subscribe((coche) => {
       this.imagenCoche = `background-image: url(${coche.imgPrincipal});`;
     });
+
+    let idUsuario = localStorage.getItem("idUsuario");
+    if(idUsuario != null){
+      this.#usuariosService.getPilotosSeguidosByIdUsuario(parseInt(idUsuario)).subscribe((pilotos: any[]) => {
+        this.siguePiloto = pilotos.some(piloto => piloto.idPiloto == this.idPiloto);
+      });
+    }
   }
   
   async cargarDatosEnGrafica(){

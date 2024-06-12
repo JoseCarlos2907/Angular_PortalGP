@@ -27,17 +27,18 @@ export class VerificarEmailComponent {
   contraseniaUsuario: string | null = null;
 
 
-  async ngOnInit(){
-    let correo = await this.#authService.fbUserEmail()
+  ngOnInit(){
+    this.contraseniaUsuario = localStorage.getItem("regContrasenia");
+    this.correoUsuario = localStorage.getItem("regCorreo");
 
-    if(correo == null || correo == undefined){
-      this.goToPaso2();
+    if(this.correoUsuario != null && this.contraseniaUsuario != null){
+      this.#authService.fbLogin(this.correoUsuario, this.contraseniaUsuario);
+    }
+    
+    if(this.correoUsuario != null && this.contraseniaUsuario){
+      this.#authService.fbSendVerificationEmail();
     }else{
-      this.#authService.fbUserCredentials().then((credenciales) => {
-        if(credenciales == null && this.correoUsuario != null && this.contraseniaUsuario != null){
-          this.#authService.fbSendVerificationEmail();
-        }
-      });
+      this.goToPaso2();
     }
 
     localStorage.clear();
@@ -51,19 +52,13 @@ export class VerificarEmailComponent {
 
   // Esta función te manda a seguir el usuario
   finalizarRegistro(){
-    this.#authService.fbUserCredentials().then((credenciales) => {
-      if(credenciales != null && this.correoUsuario != null && this.contraseniaUsuario != null){
-        this.#router.navigate(['/reg/seguir-pilotos']);
-      }else{
-        if(this.correoUsuario != null && this.contraseniaUsuario != null){
-          this.#authService.fbLogin(this.correoUsuario, this.contraseniaUsuario);
+      this.#authService.fbUserEmail().then((correo) => {
+        if(correo != null && this.correoUsuario != null && this.contraseniaUsuario != null){
           this.#router.navigate(['/reg/seguir-pilotos']);
-          
         }else{
-          console.log('Chungo si llega aqui');
+          console.log('Los localstorage no están definidos');
         }
-      }
-    });
+      });
   }
 
   // Esta función te envia otra verificación de email

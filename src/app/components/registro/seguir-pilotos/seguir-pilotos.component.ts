@@ -22,7 +22,7 @@ export class SeguirPilotosComponent {
   
 
   // Variables del componente
-  pilotos: {id: number, seguir: boolean}[] = [];
+  pilotos: {id: number, imgPerfil: string, seguir: boolean}[] = [];
   correoUsuario!: string | null;
 
 
@@ -33,19 +33,19 @@ export class SeguirPilotosComponent {
     let contraseniaUsuario = localStorage.getItem('regContrasenia');
 
     if(this.correoUsuario != null && contraseniaUsuario != null){
-      this.#authService.fbLogin(this.correoUsuario, contraseniaUsuario);
+      this.#authService.fbLogin(this.correoUsuario, contraseniaUsuario).then((value) => {
+        this.#authService.fbIsUserVerified().then((isVerified) => {
+          if(isVerified == false){
+            this.#router.navigate(['/reg/verificar-email']);
+          }
+        });
+      });
     }
-
-    this.#authService.fbIsUserVerified().then((isVerified) => {
-      if(isVerified == false){
-        this.#router.navigate(['/reg/verificar-email']);
-      }
-    });
 
 
     this.#pilotosService.getAllPilotos().subscribe((pilotos) => {
       pilotos.forEach(piloto => {
-        this.pilotos.push({id:piloto.idPiloto, seguir: false});
+        this.pilotos.push({id:piloto.idPiloto, imgPerfil: `background-image: url(${piloto.imgPerfil});`, seguir: false});
       });
     })
   }
