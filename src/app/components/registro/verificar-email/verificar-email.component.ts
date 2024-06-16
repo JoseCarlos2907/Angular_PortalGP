@@ -25,7 +25,7 @@ export class VerificarEmailComponent {
   // Variables del componente
   correoUsuario: any = null;
   contraseniaUsuario: string | null = null;
-
+  correoLoggedUsuario!: any;
 
   ngOnInit(){
     this.contraseniaUsuario = localStorage.getItem("regContrasenia");
@@ -33,15 +33,18 @@ export class VerificarEmailComponent {
 
     if(this.correoUsuario != null && this.contraseniaUsuario != null){
       this.#authService.fbLogin(this.correoUsuario, this.contraseniaUsuario);
+      localStorage.clear();
     }
+
+
+    this.correoLoggedUsuario = localStorage.getItem("correo");
     
-    if(this.correoUsuario != null && this.contraseniaUsuario){
+    if((this.correoUsuario != null && this.contraseniaUsuario) || this.correoLoggedUsuario != null){
       this.#authService.fbSendVerificationEmail();
     }else{
       this.goToPaso2();
     }
 
-    localStorage.clear();
 
     if(this.correoUsuario != null && this.contraseniaUsuario != null){
       localStorage.setItem('regCorreo', this.correoUsuario);
@@ -55,6 +58,8 @@ export class VerificarEmailComponent {
       this.#authService.fbUserEmail().then((correo) => {
         if(correo != null && this.correoUsuario != null && this.contraseniaUsuario != null){
           this.#router.navigate(['/reg/seguir-pilotos']);
+        }else if (this.correoLoggedUsuario != null){
+          this.#router.navigate(['/home']);
         }else{
           console.log('Los localstorage no están definidos');
         }

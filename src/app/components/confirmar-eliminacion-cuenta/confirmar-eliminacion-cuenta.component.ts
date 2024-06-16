@@ -51,7 +51,7 @@ export class ConfirmarEliminacionCuentaComponent {
   // Esta es la función que se ejecuta al confirmar la eliminación del usuario, recogiendo el campo de la contraseña ya que es necesario para eliminar dicha cuenta en Firebase
   eliminar(){
     if(this.id != null){
-      this.#usuariosService.borrarUsuarioPorId(this.id?.toString()).subscribe((msg) => {
+      this.#usuariosService.borrarUsuarioPorId(this.id).subscribe((msg) => {
         console.log(msg);
       });
     }
